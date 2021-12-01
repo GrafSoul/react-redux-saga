@@ -5,6 +5,7 @@ import { createStore, compose, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import { reducers } from './store/reducers/reducers';
+import { forbiddenWordsMiddleware } from './store/middleware/middleware';
 
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -12,7 +13,7 @@ import reportWebVitals from './reportWebVitals';
 const store = createStore(
     reducers,
     compose(
-        applyMiddleware(thunk),
+        applyMiddleware(thunk, forbiddenWordsMiddleware),
         window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
     ),
 );
