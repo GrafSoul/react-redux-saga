@@ -1,5 +1,5 @@
-# React, Redux and Redux-Saga
+# React, Redux + Redux-Saga
 
-Repository with an example of using libraries - React, Redux and Redux-Saga.  
+Repository with an example of using libraries - React, Redux and Redux-Saga.
 
-© 2021 
+© 2021

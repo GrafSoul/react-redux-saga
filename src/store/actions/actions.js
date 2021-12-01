@@ -1,6 +1,7 @@
 import {
     CREATE_POST,
-    FETCH_POSTS,
+    // FETCH_POSTS, //! For redux-thunk
+    REQUEST_POSTS,
     SHOW_LOADER,
     HIDE_LOADER,
     SHOW_ALERT,
@@ -43,19 +44,24 @@ export function hideAlert() {
 }
 
 export function fetchedPosts() {
-    return async (dispath) => {
-        try {
-            dispath(showLoader());
-            const response = await fetch('https://jsonplaceholder.typicode.com/photos?_limit=5');
-            const json = await response.json();
-            dispath({
-                type: FETCH_POSTS,
-                payload: json,
-            });
-            dispath(hideLoader());
-        } catch (e) {
-            dispath(showAlert('Something went wrong!'));
-            dispath(hideLoader());
-        }
+    return {
+        type: REQUEST_POSTS,
     };
+
+    //! For redux-thunk
+    // return async (dispath) => {
+    //     try {
+    //         dispath(showLoader());
+    //         const response = await fetch('https://jsonplaceholder.typicode.com/photos?_limit=5');
+    //         const json = await response.json();
+    //         dispath({
+    //             type: FETCH_POSTS,
+    //             payload: json,
+    //         });
+    //         dispath(hideLoader());
+    //     } catch (e) {
+    //         dispath(showAlert('Something went wrong!'));
+    //         dispath(hideLoader());
+    //     }
+    // };
 }
